@@ -7,14 +7,20 @@ import '../index.css'
 
 export const Nav = () => {
     return (
-        <nav>
+        <nav className="nav-container">
             <Link to="/"><img className="logo" src={logo} alt="logo" /></Link>
             <ul className="navLinks">
                 <li>
-                    <NavLink to="/Skydivers">Skydivers</NavLink>
+                    <NavLink exact to="/">Hem</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/About">About us</NavLink>
+                    <NavLink to="/Skydivers">Hoppning</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/About">Klubben</NavLink>
+                </li>
+                <li>
+                    <a href="https://fallskarmscenter.se/" target="_blank" rel="noopener noreferrer">Tandemhopp</a>
                 </li>
             </ul>
         </nav>
