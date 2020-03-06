@@ -8,7 +8,7 @@
 html,
 body {
  height: 100%;
- position: relative;
+ /* position: relative; */
 }
 .main-container {
  min-height: 100vh; /* will cover the 100% of viewport */
@@ -16,6 +16,7 @@ body {
  display: block;
  position: relative;
  padding-bottom: 100px; /* height of your footer */
+ padding-top: 80px;  
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #f5faff;
 }
 
 code {
@@ -50,6 +52,7 @@ nav {
 position: fixed;
 top:0;
 width: 100%;
+z-index: 30;
 }
 
 
@@ -79,7 +82,7 @@ a {
 }
 
 a.active{
-  color:black;
+  color:#454545;
 }
 
 .logo{

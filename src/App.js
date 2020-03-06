@@ -4,6 +4,7 @@ import { About } from './components/About'
 import { Nav } from './components/Nav'
 import { Skydivers } from './components/Skydivers'
 import { Footer } from './components/Footer'
+import { LearnToSkydive } from './components/LearnToSkydive'
 import './index.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { NewsDetails } from 'components/NewsDetails'
@@ -31,6 +32,9 @@ export const App = () => {
             </Route>
             <Route path="/newsDetails/:newsId">
               <NewsDetails />
+            </Route>
+            <Route path="/LearnToSkydive">
+              <LearnToSkydive />
             </Route>
           </Switch>
         </header>
