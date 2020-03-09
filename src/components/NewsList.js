@@ -14,14 +14,14 @@ padding-bottom:300px;
 const NewsListWrapper = style.div`
 display: flex;
 flex-wrap:wrap;
-border: 2px solid red;
+// border: 2px solid red;
 `
 const NewsListContainer = style.div`
 display:flex;
 align-items: center;
 justify content: center;
 flex-direction: column;
-border: 2px solid red;
+// border: 2px solid red;
 width:33%;
 padding:10px;
 @media (max-width:500px) {
