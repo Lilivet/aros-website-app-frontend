@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../index.css'
 import style from 'styled-components'
-import learnToSkydive from '../icon/fallkarmkurs.jpg'
-import tandemImage from '../icon/tandem.jpg'
+import learnToSkydive from '../images/fallkarmkurs.jpg'
+import tandemImage from '../images/tandem.jpg'
 
 const Wwrapper = style.div`
 display:flex;

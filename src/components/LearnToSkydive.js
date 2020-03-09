@@ -1,6 +1,6 @@
 import React from 'react'
 import style from 'styled-components'
-import learnToSkydive from '../icon/fallkarmkurs.jpg'
+import learnToSkydive from '../images/fallkarmkurs.jpg'
 
 const Form = style.form`
 display:flex;
@@ -13,6 +13,7 @@ const WrapText = style.form`
 width:40%;
 height: auto;
 text-align: left;
+margin-top:3%;
 @media (max-width:668px) {
     width:100%;
     height: 50%;
@@ -21,7 +22,8 @@ text-align: left;
 
 `
 const Img = style.img`
-width: 50%;
+width: 30%;
+margin-top:5%;
 // border:2px solid blue;
 @media (max-width:668px) {
     width:100%;

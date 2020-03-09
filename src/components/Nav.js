@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../icon/FKA_Logo.png'
+import logo from '../images/FKA_Logo.png'
 
 import '../index.css'
 // npm import styled from "styled-components";
@@ -14,7 +14,7 @@ export const Nav = () => {
                     <NavLink exact to="/">Hem</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/Skydivers">Hoppning</NavLink>
+                    <NavLink to="/NewsList">News</NavLink>
                 </li>
                 <li>
                     <NavLink to="/About">Klubben</NavLink>
