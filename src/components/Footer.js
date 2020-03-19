@@ -1,7 +1,7 @@
 import React from 'react'
 import style from 'styled-components'
 
-const MainWrapper = style.footer`
+const WrapperFooter = style.footer`
 background: #2a2b2b;
 height: 300px;
 width:100%;
@@ -12,8 +12,8 @@ bottom:0;
 
 export const Footer = () => {
     return (
-        <MainWrapper>
+        <WrapperFooter>
             <p>Hola footer</p>
-        </MainWrapper>
+        </WrapperFooter>
     )
 }

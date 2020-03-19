@@ -55,8 +55,13 @@ margin-bottom:10p;
 const Text = style.p`
 text-align: left;
 `
-
-
+const List = style.ul`
+font: 12px Montserrat, Arial, Helvetica, sans-serif;
+text-align: left;
+text-transform: uppercase;
+color:#777777;
+font-weight: 700;
+`
 
 export const LearnToSkydive = () => {
     return (
@@ -64,6 +69,9 @@ export const LearnToSkydive = () => {
             <WrapMain>
                 <WrapText>
                     <H1>FALLSKÄRMSKURS</H1>
+                    <List><li>Drömmer du om att kunna flyga?</li><br /><br />
+                        <li>Vill du känna hur det känns att hoppa ut ur ett fullt fungerande flygplan?</li><br /><br />
+                        <li>Skulle du vilja segla omkring i en fallskärm och beundra utsikten under dig?</li><br /><br /></List>
                     <Text>Svenska Fallskärmsklubben Aros erbjuder en modern form av fallskärmsutbildning, AFF.</Text>
                     <Text> Du får lära dig det du behöver om fallskärmen, hur man styr, landar och packar den. Du får träna uthopp och fallställningar i fritt fall och du får kunskap om säkerhet, aerodynamik och väder.</Text>
                     <Text>Alla kurser hålls vid Johannisbergs flygfält i utkanten av Västerås, där vi hoppar året runt.</Text>

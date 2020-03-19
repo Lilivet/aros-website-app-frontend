@@ -9,6 +9,17 @@ import './index.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { NewsDetails } from 'components/NewsDetails'
 import { NewsList } from 'components/NewsList'
+import { Login } from 'components/Login'
+// import { Session } from './components/Session'
+// import { Provider } from "react-redux";
+// import { combineReducers, configureStore } from "@reduxjs/toolkit";
+// import { auth } from "./reducers/auth";
+
+// const reducer = combineReducers({
+//   auth: auth.reducer
+// });
+
+// const store = configureStore({ reducer });
 
 export const App = () => {
   return (
@@ -35,6 +46,9 @@ export const App = () => {
             </Route>
             <Route path="/LearnToSkydive">
               <LearnToSkydive />
+            </Route>
+            <Route path="/Login">
+              <Login />
             </Route>
           </Switch>
         </header>

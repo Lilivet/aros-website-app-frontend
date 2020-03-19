@@ -14,13 +14,16 @@ export const Nav = () => {
                     <NavLink exact to="/">Hem</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/NewsList">News</NavLink>
+                    <NavLink to="/NewsList">Nyheter</NavLink>
                 </li>
                 <li>
                     <NavLink to="/About">Klubben</NavLink>
                 </li>
                 <li>
                     <a href="https://fallskarmscenter.se/" target="_blank" rel="noopener noreferrer">Tandemhopp</a>
+                </li>
+                <li>
+                    <NavLink to="/login">Login</NavLink>
                 </li>
             </ul>
         </nav>

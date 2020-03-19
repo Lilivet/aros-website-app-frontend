@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import '../index.css'
 import style from 'styled-components'
@@ -11,7 +11,8 @@ align-items: center;
 justify content: center;
 flex-direction: column;
 backround-color: white;
-height:2000px;
+height:auto;
+margin-bottom:200px;
 // border: 2px solid blue;
 `
 const WrapperLinks = style.div`
@@ -111,11 +112,11 @@ left: 0;
  }
 `
 
-
 export const Welcome = () => {
     return (
         <Wwrapper>
             <H1>Fallskärmklubben Aros</H1>
+            <br />
             <WrapperLinks>
                 <WrapperLearnToSkydive>
                     <Link to="/LearnToSkydive" >

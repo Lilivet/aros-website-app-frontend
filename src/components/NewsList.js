@@ -21,7 +21,7 @@ display:flex;
 align-items: center;
 justify content: center;
 flex-direction: column;
-// border: 2px solid red;
+//border: 2px solid red;
 width:33%;
 padding:10px;
 @media (max-width:500px) {
@@ -88,7 +88,7 @@ export const NewsList = () => {
             <NewsListWrapper>
                 {news.map((newsItem) => (
                     <NewsListContainer >
-                        <Link to={`/NewsDetails/${newsItem._id}`} key='newsItem._id'>
+                        <Link to={`/newsDetails/${newsItem._id}`} key={newsItem._id}>
 
                             <Img src={newsItem.imageUrl} alt={newsItem.title} />
                             <WrappText>
