@@ -13,7 +13,7 @@ bottom:0;
 export const Footer = () => {
     return (
         <WrapperFooter>
-            <p>Hola footer</p>
+            <Text>  |   Svenska Fallskärmsklubben Aros 2020 | <a href="mailto:info@fkaros.se" target="_top">info@fkaros.se</a> |</Text>
         </WrapperFooter>
     )
 }
