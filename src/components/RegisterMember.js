@@ -77,7 +77,8 @@ padding-left:10px;
 `
 
 
-const URL = 'http://localhost:8080/registerMembers'
+// const URL = 'http://localhost:8080/registerMembers'
+const URL = 'https://aros-backend.herokuapp.com/registerMembers'
 
 export const RegisterMember = () => {
     const [name, setName] = useState('')
