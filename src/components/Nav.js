@@ -23,12 +23,12 @@ export const Nav = () => {
                 <li>
                     <NavLink to="/newsList">Nyheter</NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink to="/about">Klubben</NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                     <a href="https://fallskarmscenter.se/" target="_blank" rel="noopener noreferrer">Tandemhopp</a>
-                </li>
+                </li> */}
                 <li>
                     {LoginLogout}
                 </li>
