@@ -115,7 +115,7 @@ left: 0;
 export const Welcome = () => {
     return (
         <Wwrapper>
-            <H1>Fallskärmklubben Aros</H1>
+            <H1>Fallskärmsklubben Aros</H1>
             <br />
             <WrapperLinks>
                 <WrapperLearnToSkydive>
