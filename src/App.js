@@ -1,25 +1,19 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Welcome } from './components/Welcome'
 import { About } from './components/About'
 import { Nav } from './components/Nav'
 import { Skydivers } from './components/Skydivers'
 import { Footer } from './components/Footer'
 import { LearnToSkydive } from './components/LearnToSkydive'
+import { NewsDetails } from './components/NewsDetails'
+import { NewsList } from './components/NewsList'
+import { Login } from './components/Login'
+import { RegisterMember } from './components/RegisterMember'
+import AuthRoute from './components/AuthRoute'
 import './index.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { NewsDetails } from 'components/NewsDetails'
-import { NewsList } from 'components/NewsList'
-import { Login } from 'components/Login'
-// import { Session } from './components/Session'
-// import { Provider } from "react-redux";
-// import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// import { auth } from "./reducers/auth";
+import { Logout } from 'components/Logout'
 
-// const reducer = combineReducers({
-//   auth: auth.reducer
-// });
-
-// const store = configureStore({ reducer });
 
 export const App = () => {
   return (
@@ -35,7 +29,7 @@ export const App = () => {
             <Route path="/about" exact>
               <About />
             </Route>
-            <Route path="/Skydivers" exact>
+            <Route path="/skydivers" exact>
               <Skydivers />
             </Route>
             <Route path="/newsList">
@@ -44,12 +38,16 @@ export const App = () => {
             <Route path="/newsDetails/:newsId">
               <NewsDetails />
             </Route>
-            <Route path="/LearnToSkydive">
+            <Route path="/learnToSkydive">
               <LearnToSkydive />
             </Route>
-            <Route path="/Login">
+            <Route path="/login">
               <Login />
             </Route>
+            <Route path="/logout">
+              <Logout />
+            </Route>
+            <AuthRoute exact path="/registerMember" isAdminRequired={true} component={RegisterMember} />
           </Switch>
         </header>
         <Footer />

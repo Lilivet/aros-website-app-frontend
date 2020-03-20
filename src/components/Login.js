@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import Cookies from 'js-cookie'
+import { Redirect } from 'react-router-dom';
 
 const Wrapper = styled.section`
   box-sizing: border-box;
@@ -8,20 +10,24 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom:250px;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   padding: 10px;
-`;
+`
+
 const LoginForm = styled.form`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-width: 80%;
-@media (min-width: 768px) {
-    width: 65%;
-  }
-
+width: 400px;
+height: 400px;
+border-bottom:2px solid #c4c3c0;
+border-right:2px solid #c4c3c0;
+border-radius: 5px;
+background-color: white;
 `
 const Title = styled.h1`
 color: #47476b;
@@ -33,22 +39,22 @@ const ErrorText = styled.h2`
 color: red;
 `
 const Input = styled.input`
-border-style: hidden;
-border-radius: 5px;
-border-bottom: 2px solid black;
-background-color: #eee;
-width: 100%;
-height: 40px;
-font-size: 20px;
-line-height: 20px;
 display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
 padding: 0px 10px;
-@media (min-width: 768px) {
-    width: 40vw;
-}
+border-style: hidden;
+border-radius: 5px;
+border-bottom: 2px solid black;
+background-color: #eee;
+width: 350px;
+outline:none;
+margin:0;
+height: 40px;
+font-size: 20px;
+line-height: 20px;
+
 `
 const ButtonWrapper = styled.div`
 display: flex;
@@ -83,10 +89,11 @@ font-size: 18px;
 
 const URL = 'http://localhost:8080/login'
 
-export const Login = () => {
+export const Login = (props) => {
     const [error, setError] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [doRedirect, setDoRedirect] = useState(false)
 
     const handleSubmit = (event) => {
         console.log("In handleSumbit()")
@@ -96,7 +103,6 @@ export const Login = () => {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }
-            // for Admin users, we need also the accessToken
         })
             .then(res => {
                 console.log('first step')
@@ -104,24 +110,27 @@ export const Login = () => {
                     return res.json()
 
                 } else {
-                    setError("Unable to login, please try again")
-                    throw new Error('Unable to login, please try again')
+                    setError("Wrong email or password")
+                    throw new Error('Wrong email or password')
                 }
             })
             .then(json => {
                 console.log(json)
-                // dispatch(auth.actions.setLoggedIn(json.loggedIn))
-                // dispatch(auth.actions.setToken(json.accessToken))
-                // dispatch(auth.actions.setUser(json.userId))
-                // dispatch(auth.actions.setName(json.name))
+                Cookies.set("access_token", json.accessToken)
+                Cookies.set("isAdmin", json.isAdmin)
+                setDoRedirect(true);
             })
             .catch(err => console.log('error:', err))
     }
 
+    if (doRedirect) {
+        return <Redirect to="/registerMember" />
+    }
+
     return (
         <Wrapper>
-            <Title>Login</Title>
             <LoginForm onSubmit={handleSubmit}>
+                <Title>Login</Title>
                 <ErrorText>{error}</ErrorText>
                 <LabelText>
                     <Input required
@@ -139,7 +148,8 @@ export const Login = () => {
                     />
                 </LabelText>
                 <ButtonWrapper>
-                    <Button type="submit" onClick={handleSubmit}>
+                    <Button type="submit"
+                        onClick={handleSubmit}>
                         LOGIN
                 </Button>
                 </ButtonWrapper>
