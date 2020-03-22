@@ -91,8 +91,8 @@ export const NewsDetails = () => {
     console.log(useParams())
     useEffect(() => {
         console.log()
-        fetch(`http://localhost:8080/news/${newsId}`)
-            // fetch(`https://aros-backend.herokuapp.com/news/${newsId}`)
+        // fetch(`http://localhost:8080/news/${newsId}`)
+        fetch(`https://aros-backend.herokuapp.com/news/${newsId}`)
             .then((res) => res.json())
             .then((json) => {
                 setNews(json)

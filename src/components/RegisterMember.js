@@ -85,8 +85,8 @@ color: green;
 `
 
 
-const URL = 'http://localhost:8080/registerMembers'
-// const URL = 'https://aros-backend.herokuapp.com/registerMembers'
+// const URL = 'http://localhost:8080/registerMembers'
+const URL = 'https://aros-backend.herokuapp.com/registerMembers'
 
 export const RegisterMember = () => {
     const [name, setName] = useState('')
