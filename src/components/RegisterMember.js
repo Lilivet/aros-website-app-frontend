@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
+import { BackendUrl } from './BackendUrl'
 
 const Wrapper = styled.section`
 box-sizing: border-box;
@@ -85,8 +86,7 @@ color: green;
 `
 
 
-// const URL = 'http://localhost:8080/registerMembers'
-const URL = 'https://aros-backend.herokuapp.com/registerMembers'
+const URL = BackendUrl + '/registerMembers'
 
 export const RegisterMember = () => {
     const [name, setName] = useState('')

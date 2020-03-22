@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BackArrow } from '../images/BackArrow'
+import { BackendUrl } from './BackendUrl'
 import '../index.css'
 
 const MainWrapperNewsDetails = styled.main`
@@ -10,10 +11,10 @@ flex-direction:column;
 align-items: center; /*this is affecting main in all pages!*/
 justify-content: center;
 width:100%;
+min-height: 1000px;
 padding-bottom:300px;
-
 `
-const LinkBack = styled.a`
+const LinkBack = styled(Link)`
 display:flex;
 flex-direction: row;
 align-items: center;
@@ -91,8 +92,7 @@ export const NewsDetails = () => {
     console.log(useParams())
     useEffect(() => {
         console.log()
-        // fetch(`http://localhost:8080/news/${newsId}`)
-        fetch(`https://aros-backend.herokuapp.com/news/${newsId}`)
+        fetch(BackendUrl + `/news/${newsId}`)
             .then((res) => res.json())
             .then((json) => {
                 setNews(json)
@@ -103,27 +103,29 @@ export const NewsDetails = () => {
         <MainWrapperNewsDetails>
 
             {news && (
+
                 <WrapperNewsDetails>
+
                     <H1>{news.title}</H1>
                     <WrapperTextImage>
-                        <Text>{news.synopsis.split('\n').map((text) => {
+                        <Text>{news.synopsis.split('\n').map((text, index) => {
                             return (
-                                <>
-                                    <span key={newsId}>
+                                <React.Fragment key={newsId + index}>
+                                    <span>
                                         {text}
                                         <br />
                                     </span>
-                                </>
+                                </React.Fragment>
                             )
                         })}</Text>
                         <NewsImg src={news.imageUrl} alt={news.title} />
                     </WrapperTextImage>
-                    <Link to="/NewsList" >
-                        <LinkBack>
-                            <BackArrow />
-                            <TextBack>Nyheter</TextBack>
-                        </LinkBack>
-                    </Link>
+                    {/* <Link to="/NewsList" className="linkBack"> */}
+                    <LinkBack to="/NewsList">
+                        <BackArrow />
+                        <TextBack>Nyheter</TextBack>
+                    </LinkBack>
+                    {/* </Link> */}
                 </WrapperNewsDetails>
             )
             }

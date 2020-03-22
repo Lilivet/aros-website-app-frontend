@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import style from 'styled-components'
 import moment from 'moment'
+import { BackendUrl } from './BackendUrl'
 import '../index.css'
 
 const MainWrapperNewsList = style.div`
@@ -9,6 +10,7 @@ display: flex;
 flex-direction:column;
 align-items: center;
 width:100%;
+min-height: 1000px;
 padding-bottom:300px;
 `
 const NewsListWrapper = style.div`
@@ -75,8 +77,7 @@ export const NewsList = () => {
     const [news, setNews] = useState([])
 
     useEffect(() => {
-        // fetch('http://localhost:8080/news/newsList')
-        fetch('https://aros-backend.herokuapp.com/news/newsList')
+        fetch(BackendUrl + '/news/newsList')
             .then((res) => res.json())
             .then((json) => {
                 setNews(json)
@@ -88,18 +89,20 @@ export const NewsList = () => {
             <H1> AROS NYHETER</H1>
             <NewsListWrapper>
                 {news.map((newsItem) => (
-                    <NewsListContainer >
-                        <Link to={`/newsDetails/${newsItem._id}`} key={newsItem._id}>
+                    <React.Fragment key={newsItem._id}>
+                        <NewsListContainer>
+                            <Link to={`/newsDetails/${newsItem._id}`}>
 
-                            <Img src={newsItem.imageUrl} alt={newsItem.title} />
-                            <WrappText>
-                                <h2>{newsItem.title}</h2>
-                                <p>{newsItem.shortSynopsis} ...</p>
-                                <p>{moment(newsItem.createdAt).format("MMMM Do YYYY")}</p>
-                            </WrappText>
+                                <Img src={newsItem.imageUrl} alt={newsItem.title} />
+                                <WrappText>
+                                    <h2>{newsItem.title}</h2>
+                                    <p>{newsItem.shortSynopsis} ...</p>
+                                    <p>{moment(newsItem.createdAt).format("MMMM Do YYYY")}</p>
+                                </WrappText>
 
-                        </Link>
-                    </NewsListContainer>
+                            </Link>
+                        </NewsListContainer>
+                    </React.Fragment>
                 ))}
             </NewsListWrapper>
         </MainWrapperNewsList >
