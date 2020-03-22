@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import Cookies from 'js-cookie'
+import { useSelector } from 'react-redux'
 
 const Wrapper = styled.section`
 box-sizing: border-box;
@@ -42,7 +42,7 @@ padding: 0px 10px;
 border-style: hidden;
 border-radius: 5px;
 border-bottom: 2px solid black;
-border-color: ${props => (props.class === "error") ? "red" : "#eee"};
+border-color: ${props => (props.className === "error") ? "red" : "#eee"};
 background-color: #eee;
 outline:none;
 width: 350px;
@@ -76,42 +76,71 @@ text-aling-padding-left:10px;
 padding-left:10px;
 `
 
+const ErrorText = styled.h2`
+color: red;
+`
 
-// const URL = 'http://localhost:8080/registerMembers'
-const URL = 'https://aros-backend.herokuapp.com/registerMembers'
+const SuccessText = styled.h2`
+color: green;
+`
+
+
+const URL = 'http://localhost:8080/registerMembers'
+// const URL = 'https://aros-backend.herokuapp.com/registerMembers'
 
 export const RegisterMember = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState('')
     const adminCheckBox = React.createRef()
+    const accessToken = useSelector((store) => store.auth.accessToken)
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        let isAdmin = adminCheckBox.current.checked
-        console.log("Sending isAdmin = " + isAdmin)
-
-        fetch(URL, {
+    const handleFetch = async () => {
+        const isAdmin = adminCheckBox.current.checked
+        const response = await fetch(URL, {
             method: 'POST',
             body: JSON.stringify({ name, email, password, isAdmin }),
-            headers: { 'Content-Type': 'application/json', 'Authorization': Cookies.get("access_token") }
+            headers: { 'Content-Type': 'application/json', 'Authorization': accessToken }
         })
-            .then(res => {
-                res.json()
-                // if (res.status === 201)
+        const json = response.json()
+        return json
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        handleFetch()
+            .then(json => {
+                console.log("Json: " + JSON.stringify(json))
+                setSuccess(json.success)
+
+                if (json.success === true) {
+                    setName('')
+                    setEmail('')
+                    setPassword('')
+                    setError('')
+                } else {
+                    console.log("Error: " + json.message)
+                    setError(json.message)
+                }
             })
-            .then(json => console.log(json))
-            .catch(err => console.log('error:', err))
+            .catch(err => {
+                console.log('error:', err)
+                setError(err)
+            })
     }
 
     let isNameValid = name.length > 3
     let isEmailValid = email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-    let nameClass = isNameValid ? {} : { class: "error" }
-    let emailClass = isEmailValid ? {} : { class: "error" }
+    let nameClass = isNameValid ? {} : { className: "error" }
+    let emailClass = isEmailValid ? {} : { className: "error" }
+    let passwordClass = password.length >= 6 ? {} : { className: "error" }
 
     return (
         <Wrapper>
             <Title>Register a new Member</Title>
+            <ErrorText>{error}</ErrorText>
             <SignupForm onSubmit={handleSubmit}>
                 <LabelText> name:
                 <Input required
@@ -135,6 +164,7 @@ export const RegisterMember = () => {
                     password:
                 <Input required
                         type="password"
+                        {...passwordClass}
                         value={password}
                         onChange={event => setPassword(event.target.value)}
                         placeholder="password"
@@ -150,7 +180,7 @@ export const RegisterMember = () => {
                     REGISTER
                     </Button>
             </SignupForm>
-
+            <SuccessText>{success ? "Added a new user" : ""}</SuccessText>
         </Wrapper>
     )
 }

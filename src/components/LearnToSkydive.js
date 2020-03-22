@@ -1,15 +1,15 @@
 import React from 'react'
-import style from 'styled-components'
+import styled from 'styled-components/macro'
 import learnToSkydive from '../images/fallkarmkurs.jpg'
 
-const Form = style.form`
+const Form = styled.form`
 display:flex;
 flex-direction: column;
 align-items:center;
 justify content:flex-start;
 height:1000px;
 `
-const WrapText = style.form`
+const WrapText = styled.form`
 width:40%;
 height: auto;
 text-align: left;
@@ -21,7 +21,7 @@ margin-top:3%;
 }
 
 `
-const Img = style.img`
+const Img = styled.img`
 width: 30%;
 margin-top:5%;
 // border:2px solid blue;
@@ -29,7 +29,7 @@ margin-top:5%;
     width:100%;
 }
 `
-const WrapMain = style.div`
+const WrapMain = styled.div`
 display: flex;
 align-items:flex-start;
 justify-content:space-evenly;
@@ -37,7 +37,7 @@ justify-content:space-evenly;
     flex-direction: column;
 }
 `
-const H1 = style.h1`
+const H1 = styled.h1`
 font: 30px Montserrat, Arial, Helvetica, sans-serif;
 color: #454545;
 text-transform: uppercase;
@@ -52,10 +52,10 @@ margin-top:20px;
 margin-bottom:10p;
   }
 `
-const Text = style.p`
+const Text = styled.p`
 text-align: left;
 `
-const List = style.ul`
+const List = styled.ul`
 font: 12px Montserrat, Arial, Helvetica, sans-serif;
 text-align: left;
 text-transform: uppercase;

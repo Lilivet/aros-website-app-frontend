@@ -75,8 +75,8 @@ export const NewsList = () => {
     const [news, setNews] = useState([])
 
     useEffect(() => {
-        // fetch('http://localhost:8080/news/newsList')
-        fetch('https://aros-backend.herokuapp.com/news/newsList')
+        fetch('http://localhost:8080/news/newsList')
+            // fetch('https://aros-backend.herokuapp.com/news/newsList')
             .then((res) => res.json())
             .then((json) => {
                 setNews(json)

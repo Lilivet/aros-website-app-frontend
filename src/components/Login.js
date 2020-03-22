@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import Cookies from 'js-cookie'
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
+import { auth } from '../reducers/auth'
 
 const Wrapper = styled.section`
   box-sizing: border-box;
@@ -86,15 +87,17 @@ font-size: 18px;
 `
 
 
-// const URL = 'http://localhost:8080/login'
-const URL = 'https://aros-backend.herokuapp.com/login'
+const URL = 'http://localhost:8080/login'
+// const URL = 'https://aros-backend.herokuapp.com/login'
 
 
-export const Login = (props) => {
+export const Login = () => {
     const [error, setError] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [doRedirect, setDoRedirect] = useState(false)
+    const dispatch = useDispatch()
+
 
     const handleSubmit = (event) => {
         console.log("In handleSumbit()")
@@ -105,23 +108,24 @@ export const Login = (props) => {
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(res => {
-                console.log('first step')
-                if (res.ok) {
-                    return res.json()
-
-                } else {
-                    setError("Wrong email or password")
-                    throw new Error('Wrong email or password')
-                }
-            })
+            .then(res => res.json())
             .then(json => {
-                console.log(json)
-                Cookies.set("access_token", json.accessToken)
-                Cookies.set("isAdmin", json.isAdmin)
-                setDoRedirect(true);
-            })
-            .catch(err => console.log('error:', err))
+                console.log("JSon: " + JSON.stringify(json))
+                dispatch(auth.actions.setLoggedIn(json.loggedIn))
+                console.log('after dispatch setLoggedIn')
+                if (json.loggedIn) {
+                    console.log("Updating auth")
+                    dispatch(auth.actions.setAccessToken(json.accessToken))
+                    dispatch(auth.actions.setUser(json.userId))
+                    dispatch(auth.actions.setName(json.name))
+                    dispatch(auth.actions.setIsAdmin(json.isAdmin))
+
+                    setDoRedirect(true)
+                } else {
+                    dispatch(auth.actions.setIsAdmin(false))
+                    setError("Wrong email or password")
+                }
+            }).catch(err => console.log('error:', err))
     }
 
     if (doRedirect) {

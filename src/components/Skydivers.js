@@ -1,7 +1,7 @@
 import React from 'react'
-import style from 'styled-components'
+import styled from 'styled-components/macro'
 
-const MainWrapper = style.form`
+const MainWrapper = styled.form`
 
 `
 

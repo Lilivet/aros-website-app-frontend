@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import Cookies from 'js-cookie'
+import { useSelector } from 'react-redux'
 import logo from '../images/FKA_Logo.png'
 import '../index.css'
 
 export const Nav = () => {
+    const isLoggedIn = useSelector((store) => store.auth.loggedIn)
+
     let LoginLogout = '';
-    console.log("access_token = '" + Cookies.get("access_token") + "'")
-    if (Cookies.get("access_token") !== undefined) {
+    if (isLoggedIn) {
         LoginLogout = <NavLink to="/logout">Log Out</NavLink>
     } else {
         LoginLogout = <NavLink to="/login">Login</NavLink>

@@ -1,9 +1,11 @@
 import React from 'react'
-import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
+import { auth } from '../reducers/auth'
 import { Redirect } from 'react-router-dom'
 
 export const Logout = () => {
-    Cookies.remove("access_token")
+    const dispatch = useDispatch()
+    dispatch(auth.actions.logout())
 
     return (
         <Redirect push to="/" />
