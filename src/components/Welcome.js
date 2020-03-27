@@ -11,8 +11,8 @@ align-items: center;
 justify content: center;
 flex-direction: column;
 backround-color: white;
-height:auto;
-margin-bottom:200px;
+min-height: 700px;
+margin-bottom:100px;
 // border: 2px solid blue;
 `
 const WrapperLinks = style.div`

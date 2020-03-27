@@ -11,8 +11,8 @@ flex-direction:column;
 align-items: center; /*this is affecting main in all pages!*/
 justify-content: center;
 width:100%;
-min-height: 1000px;
-padding-bottom:300px;
+min-height: 800px;
+padding-bottom:100px;
 `
 const LinkBack = styled(Link)`
 display:flex;

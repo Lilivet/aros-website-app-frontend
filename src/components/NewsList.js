@@ -10,8 +10,8 @@ display: flex;
 flex-direction:column;
 align-items: center;
 width:100%;
-min-height: 1000px;
-padding-bottom:300px;
+min-height: 800px;
+padding-bottom:100px;
 `
 const NewsListWrapper = style.div`
 display: flex;
