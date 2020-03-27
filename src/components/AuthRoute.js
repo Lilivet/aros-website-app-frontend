@@ -16,10 +16,11 @@ export const AuthRoute = ({ component: Component, exact, path, isAdminRequired, 
                 console.log("Auth.loggedIn = " + auth.loggedIn + ", isAdmin = " + auth.isAdmin)
                 //console.log("isAdmin = " + Cookies.get("isAdmin") + ", token = " + Cookies.get("access_token"))
 
-                if (auth.loggedIn && (auth.isAdmin === true || isAdminRequired === false)) {
+                if (auth.loggedIn && (auth.isAdmin === "true" || isAdminRequired === false)) {
                     return <Component {...props} />
                 }
                 else {
+                    console.log("Not authorized, redirecting")
                     return <Redirect to={
                         {
                             pathname: "/",

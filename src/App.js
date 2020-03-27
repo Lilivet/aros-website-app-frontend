@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-
 import { Welcome } from './components/Welcome'
 import { About } from './components/About'
 import { Nav } from './components/Nav'
@@ -18,6 +17,7 @@ import AuthRoute from './components/AuthRoute'
 import './index.css'
 import { Logout } from 'components/Logout'
 
+
 const ScrollToTop = () => {
   const { pathname } = useLocation()
 
@@ -30,11 +30,13 @@ const ScrollToTop = () => {
 
 const reducer = combineReducers({
   auth: auth.reducer
-});
+})
 
-const store = configureStore({ reducer });
+const store = configureStore({ reducer })
+
 
 export const App = () => {
+
   return (
     <Provider store={store}>
       <BrowserRouter>
