@@ -120,12 +120,10 @@ export const NewsDetails = () => {
                         })}</Text>
                         <NewsImg src={news.imageUrl} alt={news.title} />
                     </WrapperTextImage>
-                    {/* <Link to="/NewsList" className="linkBack"> */}
                     <LinkBack to="/NewsList">
                         <BackArrow />
                         <TextBack>Nyheter</TextBack>
                     </LinkBack>
-                    {/* </Link> */}
                 </WrapperNewsDetails>
             )
             }

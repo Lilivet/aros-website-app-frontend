@@ -12,6 +12,7 @@ import { NewsDetails } from './components/NewsDetails'
 import { NewsList } from './components/NewsList'
 import { Login } from './components/Login'
 import { RegisterMember } from './components/RegisterMember'
+// import { FormNews } from './components/FormNews'
 import { auth } from './reducers/auth'
 import AuthRoute from './components/AuthRoute'
 import './index.css'
@@ -70,6 +71,7 @@ export const App = () => {
                 <Logout />
               </Route>
               <AuthRoute exact path="/registerMember" isAdminRequired={true} component={RegisterMember} />
+              {/* <AuthRoute exact path="/formNews" isAdminRequired={true} component={FormNews} /> */}
             </Switch>
           </div>
           <Footer />

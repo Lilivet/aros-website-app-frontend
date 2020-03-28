@@ -32,10 +32,7 @@ export const auth = createSlice({
             state.name = action.payload
             localStorage.setItem("name", action.payload)
         },
-        // setLoggedOut: (state, action) => {
-        //     state.loggedIn = false;
-        //     localStorage.clear();
-        //     sessionStorage.clear();
+
         logout: (state) => {
             state.accessToken = ''
             state.loggedIn = false

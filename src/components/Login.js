@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
 import { auth } from '../reducers/auth'
+import { BackendUrl } from './BackendUrl'
 
 const Wrapper = styled.section`
   box-sizing: border-box;
@@ -88,7 +89,7 @@ font-size: 18px;
 
 
 // const URL = 'http://localhost:8080/login'
-const URL = 'https://aros-backend.herokuapp.com/login'
+const URL = BackendUrl + '/login'
 
 
 export const Login = () => {

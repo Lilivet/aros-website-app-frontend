@@ -15,7 +15,7 @@ margin-bottom:250px;
 width: 100%;
 height: 100%;
 padding: 10px;
-`;
+`
 const SignupForm = styled.form`
 display: flex;
 flex-direction: column;
